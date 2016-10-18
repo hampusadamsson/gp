@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import copy
 from root import *
 import random
@@ -6,13 +6,13 @@ import random
 
 
 def plot(vals):
-    plt.plot(vals)
-    plt.ylabel('MSE')    
-    plt.show()
-
+    # plt.plot(vals)
+    # plt.ylabel('MSE')    
+    # plt.show()
+    return 0
     
 class ga:
-    iterations = 5000
+    iterations = 100000
     pop_size = 50
     pop = []
 

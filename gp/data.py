@@ -7,7 +7,7 @@ p_err = False
 ops = {'+':operator.add,
        '-':operator.sub,
        '*':operator.mul,
-       '/':operator.div,
+       '/':operator.div}
        # '^':operator.pow,
        # 'abs':abs,
        # 'asin':math.asin,
@@ -19,11 +19,12 @@ ops = {'+':operator.add,
        # 'exp':math.exp,
        # 'sqrt':math.sqrt,
        # 'log':math.log,
-       'sin':math.sin,
-       'tan':math.tan,
-       'cos':math.cos}
+       # 'sin':math.sin,
+       # 'tan':math.tan,
+       # 'cos':math.cos}
 
-var = { 'pi':math.pi}
+var = {'pi':math.pi}
+var = {}
 
 nr_var = 57
 for x in range(1,nr_var+1):

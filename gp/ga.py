@@ -12,11 +12,11 @@ def plot(vals):
     return 0
     
 class ga:
-    iterations = 100000
+    iterations = 100000000
     pop_size = 50
     pop = []
 
-    elit = 3
+    elit = 5
     mut_rate = 1
 
     result = []

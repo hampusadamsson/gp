@@ -24,7 +24,8 @@ class ga:
     
     def load_data(self):
         self.train_set = []
-        fname = '/home/hampus/Downloads/coursework2-training.csv'
+        # fname = '/home/hampus/Downloads/coursework2-training.csv'
+        fname = 'coursework2-training.csv'
         with open(fname) as f:
             content = f.readlines()
         content.pop(0)

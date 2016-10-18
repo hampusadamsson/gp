@@ -1,0 +1,45 @@
+import copy
+from tree import *
+from data import calculate
+
+
+class root:
+    tree = None
+    fit = None
+    train_set = []
+    depth = 6
+
+    
+    def init(self):
+        self.tree = init_tree(self.depth)
+
+        
+    def mutate(self):
+        self.tree.mutate()
+
+    
+    def mse(self):
+        equ_n = self.tree.make_list()
+        mse = 0
+        for test in self.train_set:
+            equ = copy.deepcopy(equ_n)
+            for x in range(0, len(equ)-1):
+                if type(equ[x])==str and equ[x][0] == 'x':
+                    equ[x] = test[int(equ[x][1:])-1]
+            try:
+                mse += (calculate(equ)-test[-1])**2
+            except:
+                mse += 999999
+            
+        self.fit = mse
+        return mse
+
+def init_root(t_s):
+    ind = root()
+    ind.train_set = t_s
+    ind.init()
+    # print ind.tree.make_list()
+    # print ind.mse()
+    return ind
+
+# init_root()

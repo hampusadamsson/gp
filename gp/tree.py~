@@ -1,0 +1,94 @@
+from data import *
+
+
+class tree:
+    parent = None
+    left = None
+    right = None
+    data = None
+
+    mut_op_val_rate = 0 # 1= value, 0= op
+    
+
+    def tree_to_list(self):
+        if self.left != None and self.right != None:
+            return self.left.tree_to_list() + self.right.tree_to_list() + [self]
+        elif self.left != None:
+            return self.left.tree_to_list() + [self]
+        elif self.right != None:
+            return self.right.tree_to_list() + [self]
+        return [self]    
+
+    def make_list(self):
+        if self.left != None and self.right != None:
+            return self.left.make_list() + self.right.make_list() + [self.data]
+        elif self.left != None:
+            return self.left.make_list() + [self.data]
+        elif self.right != None:
+            return self.right.make_list() + [self.data]
+        return [self.data]
+
+    
+    def add(self, depth):
+        if depth == 1:
+            self.data = get_rnd_var()
+            
+        elif depth > 1:
+            self.data = get_rnd_op()
+            ntree = tree()
+            ntree.parent = self
+            self.left = ntree
+            ntree.add(depth-1)
+            if nr_inp(self.data) == 2:
+                ntree = tree()
+                ntree.parent = self
+                self.right = ntree
+                ntree.add(depth-1)
+
+
+    def get_rnd_node(self):
+        ls = self.tree_to_list()
+        rnd = random.randrange(0, len(ls)-1)
+        node = ls[rnd]
+        return node
+
+
+    def mutate(self):
+        node = self.get_rnd_node()
+        r = random.uniform(0, 1)
+
+        if r < self.mut_op_val_rate:
+            node.data = get_rnd_var()
+            node.left = None
+            node.right = None
+        else:
+            node.data = get_rnd_op()
+
+            if nr_inp(node.data) == 1:
+                if (node.left != None and node.right != None):
+                    node.left = None
+                elif (node.left == None and node.right == None):
+                    tmp = tree()
+                    tmp.parent = node
+                    tmp.data = get_rnd_var()
+                    node.left = tmp
+                
+            elif nr_inp(node.data) == 2:
+                if node.left == None:
+                    tmp = tree()
+                    tmp.parent = node
+                    tmp.data = get_rnd_var()
+                    node.left = tmp
+
+                if node.right == None:
+                    tmp = tree()
+                    tmp.parent = node
+                    tmp.data = get_rnd_var()
+                    node.right = tmp
+                
+def init_tree(depth):
+    ntree = tree()
+    ntree.add(depth)    
+    return ntree
+
+        

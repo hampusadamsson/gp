@@ -7,7 +7,7 @@ p_err = False
 ops = {'+':operator.add,
        '-':operator.sub,
        '*':operator.mul,
-       '/':operator.div}
+       '/':operator.div,
        # '^':operator.pow,
        # 'abs':abs,
        # 'asin':math.asin,
@@ -17,14 +17,14 @@ ops = {'+':operator.add,
        # 'cosh':math.cosh,
        # 'tanh':math.tanh,
        # 'exp':math.exp,
-       # 'sqrt':math.sqrt,
-       # 'log':math.log,
-       # 'sin':math.sin,
-       # 'tan':math.tan,
-       # 'cos':math.cos}
+       'sqrt':math.sqrt,
+       'log':math.log,
+       'sin':math.sin,
+       'tan':math.tan,
+       'cos':math.cos}
 
-# var = {'pi':math.pi}
-var = {}
+var = {'pi':math.pi}
+# var = {}
 
 nr_var = 57
 

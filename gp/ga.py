@@ -16,7 +16,7 @@ class ga:
     pop_size = 100
     pop = []
 
-    elit = 1
+    elit = 10
     mut_rate = 1
 
     result = []

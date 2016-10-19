@@ -6,7 +6,7 @@ class root:
     tree = None
     fit = None
     depth = 3
-    max_depth = 6
+    max_depth = 7
     
     def init(self):
         self.tree = init_tree(self.depth)

@@ -1,4 +1,4 @@
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import copy
 from root import *
 import random
@@ -6,25 +6,24 @@ import random
 
 
 def plot(vals):
-    # plt.plot(vals)
-    # plt.ylabel('MSE')    
-    # plt.show()
+    plt.plot(vals)
+    plt.ylabel('MSE')    
+    plt.show()
     return 0
     
 class ga:
     iterations = 100000000
-    pop_size = 50
+    pop_size = 100
     pop = []
 
-    elit = 5
+    elit = 1
     mut_rate = 1
 
     result = []
-    train_set = [[3,2,7,8,2,6],[2,2,9,7,2,4],[1,2,3,9,9,81],[1,8,234,123,412,17495]]
-    
+    train_set = [[3,2,7,8,2,6],[2,2,9,7,2,4],[1,2,3,9,9,81]]
+
     def load_data(self):
         self.train_set = []
-        # fname = '/home/hampus/Downloads/coursework2-training.csv'
         fname = 'coursework2-training.csv'
         with open(fname) as f:
             content = f.readlines()
@@ -46,6 +45,10 @@ class ga:
     def evaluate(self):
         for ind in self.pop:
             ind.mse(self.train_set)
+
+    def depth_ctrl(self):
+        for ind in self.pop:
+            ind.depth_ctrl()
 
             
     def sort(self):
@@ -78,7 +81,7 @@ class ga:
         while(p1==p2):
             p2 = self.select()
 
-        
+        # UPDATE THE TREE DEPTH ALSO *
         child = p1.copy()
         replace_node = child.tree.get_rnd_node()
         p2_node = p2.tree.get_rnd_node()        
@@ -99,6 +102,7 @@ class ga:
     def run(self):
         for i in range(0, self.iterations):
             new_pop = []
+            self.depth_ctrl()
             self.evaluate()
             self.sort()
             self.result.append(self.pop[0].fit)

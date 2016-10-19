@@ -5,13 +5,15 @@ from tree import *
 class root:
     tree = None
     fit = None
-    depth = 7
-    
+    depth = 3
+    max_depth = 6
     
     def init(self):
         self.tree = init_tree(self.depth)
 
-        
+    def depth_ctrl(self):
+        self.tree.depth_ctrl(self.max_depth)
+    
     def mutate(self):
         node = self.tree.get_rnd_node()
         node.mutate()

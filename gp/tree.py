@@ -22,7 +22,24 @@ class tree:
             ntree.right.parent = ntree
         return ntree
 
+    
+    def depth_ctrl(self, max_d):
+        if max_d == 0:
+            self.left = None
+            self.right = None
 
+            if nr_inp(self.data) != 0:
+                self.data = get_rnd_var()
+            
+        if self.left != None and self.right != None:
+            self.left.depth_ctrl(max_d-1)
+            self.right.depth_ctrl(max_d-1)
+        elif self.left != None:
+            self.left.depth_ctrl(max_d-1)
+        elif self.right != None:
+            self.right.depth_ctrl(max_d-1)
+
+    
     def tree_to_list(self):
         if self.left != None and self.right != None:
             return self.left.tree_to_list() + self.right.tree_to_list() + [self]
@@ -44,6 +61,7 @@ class tree:
 
     
     def add(self, depth):
+        
         if depth == 1:
             self.data = get_rnd_var()
             

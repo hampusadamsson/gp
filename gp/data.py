@@ -23,10 +23,11 @@ ops = {'+':operator.add,
        # 'tan':math.tan,
        # 'cos':math.cos}
 
-var = {'pi':math.pi}
+# var = {'pi':math.pi}
 var = {}
 
 nr_var = 57
+
 for x in range(1,nr_var+1):
     var['x'+str(x)] = 0
 

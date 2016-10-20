@@ -39,6 +39,7 @@ class root:
                 self.fit = float('inf')
                 return float('inf')
                         
+        mse /= len(train_set)
         self.fit = mse
         return mse
 

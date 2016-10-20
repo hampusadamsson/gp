@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import copy
 from root import *
 import random
@@ -13,12 +13,13 @@ def plot(vals):
     
 class ga:
     iterations = 100000000
-    pop_size = 100
+    pop_size = 1000
     pop = []
 
-    elit = 10
-    mut_rate = 1
-
+    elit = 100
+    mut_rate = 0.8
+    cross_rate = 0.8
+    
     result = []
     train_set = [[3,2,7,8,2,6],[2,2,9,7,2,4],[1,2,3,9,9,81]]
 
@@ -120,10 +121,15 @@ class ga:
 
             
             # CROSSOVER
-            for x in range(0, self.pop_size-self.elit):
+            for x in range(0, int((self.pop_size-self.elit)*self.cross_rate)):
                 new_pop.append(self.crossover())
+        
 
+            # FILL POP
+            while(len(new_pop)!=(self.pop_size-self.elit)):
+                new_pop.append(self.pop.pop(random.randrange(self.elit, len(self.pop))))
 
+                
             # MUTATION
             for ind in new_pop:
                 val = random.uniform(0, 1)
@@ -136,6 +142,7 @@ class ga:
                 new_pop.append(self.pop.pop(0))
 
 
+                
             self.pop = new_pop
             
         # END CHECK

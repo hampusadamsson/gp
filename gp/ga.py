@@ -1,4 +1,4 @@
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import copy
 from root import *
 import random
@@ -12,11 +12,11 @@ def plot(vals):
     return 0
     
 class ga:
-    iterations = 100000000
-    pop_size = 1000
+    iterations = 1000000
+    pop_size = 10
     pop = []
 
-    elit = 100
+    elit = 1
     mut_rate = 0.8
     cross_rate = 0.8
     
@@ -41,6 +41,7 @@ class ga:
         for x in range(0, self.pop_size):
             ind = init_root()
             self.pop.append(ind)
+        self.pop[0] = in_b()
 
             
     def evaluate(self):
@@ -108,7 +109,9 @@ class ga:
             self.sort()
             self.result.append(self.pop[0].fit)
 
-            
+
+            print "---------------------"
+            print i
             print self.pop[0].fit
             print self.pop[0].tree.make_list()
 

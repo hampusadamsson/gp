@@ -59,9 +59,48 @@ class tree:
             return self.right.make_list() + [self.data]
         return [self.data]
 
+
+    def get_subtree(self, eq):
+        stack = []
+        i = 1
+        while i != 0:
+            # print eq
+            # print stack
+            
+            val = eq.pop()
+            stack.insert(0, val)
+            i += nr_inp(val)
+            i -= 1
+        return stack
+
     
-    def add(self, depth):
+    def insert(self, equ):
+        self.data = equ.pop()
+
+        if len(equ) != 0:
+            ntree = tree()
+            ntree.parent = self
+            tmp = self.get_subtree(equ)
+            if len(equ) == 0:
+                self.left = ntree
+            else:
+                self.right = ntree
+
+            ntree.insert(tmp)
+        if len(equ) != 0:
+            ntree = tree()
+            ntree.parent = self
+            self.left = ntree
+            tmp = self.get_subtree(equ)
+            ntree.insert(tmp)
+
+                
+    def equ2tree(self, equ):
+        val = equ.split(' ')
+        self.insert(val)
         
+
+    def add(self, depth):        
         if depth == 1:
             self.data = get_rnd_var()
             
@@ -76,7 +115,7 @@ class tree:
                 ntree.parent = self
                 self.right = ntree
                 ntree.add(depth-1)
-
+        
 
     def get_rnd_node(self):
         ls = self.tree_to_list()
@@ -181,3 +220,4 @@ def init_tree(depth):
 # print tr.make_list()
 
 # print tr.calc()
+

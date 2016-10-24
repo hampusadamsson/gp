@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import copy
 from root import *
 import random
@@ -6,19 +6,19 @@ import random
 
 
 def plot(vals):
-    plt.plot(vals)
-    plt.ylabel('MSE')    
-    plt.show()
+    # plt.plot(vals)
+    # plt.ylabel('MSE')    
+    # plt.show()
     return 0
     
 class ga:
     iterations = 1000000
-    pop_size = 10
+    pop_size = 1000
     pop = []
 
-    elit = 1
-    mut_rate = 0.8
-    cross_rate = 0.8
+    elit = 200
+    mut_rate = 0.9
+    cross_rate = 0.9
     
     result = []
     train_set = [[3,2,7,8,2,6],[2,2,9,7,2,4],[1,2,3,9,9,81]]

@@ -49,9 +49,9 @@ def in_b():
     eq = "x45 x9 + 3 x17 - sin - sqrt x9 x1 x3 - - sqrt x8 x9 + x6 + sin + + 1 5 * x6 cos + x54 x53 log + cos + x8 x9 + x5 - cos cos + + sqrt"
 
     tr.equ2tree(eq)
-    print eq.split(' ')
-    print tr.make_list()
-    print  eq.split(' ') == tr.make_list()
+    # print eq.split(' ')
+    # print tr.make_list()
+    # print  eq.split(' ') == tr.make_list()
     return ind
 
     

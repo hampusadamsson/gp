@@ -4,8 +4,8 @@ from tree import *
 class root:
     tree = None
     fit = None
-    depth = 3
-    max_depth = 7
+    depth = 4
+    max_depth = 6
     
     def init(self):
         self.tree = init_tree(self.depth)
@@ -26,12 +26,12 @@ class root:
 
     
     def mse(self, train_set):
-        mse = 0
+        mse = 0.0
 
         for xset in train_set:
-            target = xset[-1]
+            target = float(xset[-1])
             inp = xset[:-1]
-            ans = self.tree.calc(inp)
+            ans = float(self.tree.calc(inp))
             try:
                 mse += (ans-target)**2
             except:
@@ -48,13 +48,12 @@ def in_b():
     ind.tree = tr
     eq = "x45 x9 + 3 x17 - sin - sqrt x9 x1 x3 - - sqrt x8 x9 + x6 + sin + + 1 5 * x6 cos + x54 x53 log + cos + x8 x9 + x5 - cos cos + + sqrt"
 
+    
     tr.equ2tree(eq)
     # print eq.split(' ')
     # print tr.make_list()
     # print  eq.split(' ') == tr.make_list()
     return ind
-
-    
 
     
 def init_root():
@@ -63,4 +62,7 @@ def init_root():
     return ind
 
 
-in_b()
+
+
+tr = in_b()
+# print tr.mse()

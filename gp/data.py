@@ -6,16 +6,17 @@ p_err = False
 
 ops = {'+':operator.add,
        '-':operator.sub,
+       '~':operator.neg,
        '*':operator.mul,
        '/':operator.div,
-       # '^':operator.pow,
-       # 'abs':abs,
-       # 'asin':math.asin,
-       # 'acos':math.acos,
-       # 'atan':math.atan,
-       # 'sinh':math.sinh,
-       # 'cosh':math.cosh,
-       # 'tanh':math.tanh,
+       '^':operator.pow,
+       'abs':abs,
+       'asin':math.asin,
+       'acos':math.acos,
+       'atan':math.atan,
+       'sinh':math.sinh,
+       'cosh':math.cosh,
+       'tanh':math.tanh,
        'exp':math.exp,
        'sqrt':math.sqrt,
        'log':math.log,
@@ -76,35 +77,35 @@ def nr_inp(o):
         return 1
 
 
-def test():
-    equation = "1 2 + 3 *"
-    answer = 9
-    assert  calculate(equation.split(' ')) == answer
+# def test():
+#     equation = "1 2 + 3 *"
+#     answer = 9
+#     assert  calculate(equation.split(' ')) == answer
         
-    equation = "x1 2 *"
-    answer = 4
-    assert  calculate(equation.split(' ')) == answer
+#     equation = "x1 2 *"
+#     answer = 4
+#     assert  calculate(equation.split(' ')) == answer
 
-    equation = "x1 2 * x2 *"
-    answer = 12
-    assert  calculate(equation.split(' ')) == answer
+#     equation = "x1 2 * x2 *"
+#     answer = 12
+#     assert  calculate(equation.split(' ')) == answer
 
-    equation = "1 4 /"
-    answer = 0.25
-    assert  calculate(equation.split(' ')) == answer
+#     equation = "1 4 /"
+#     answer = 0.25
+#     assert  calculate(equation.split(' ')) == answer
 
-    equation = "1 4 / 4 *"
-    answer = 1
-    assert  calculate(equation.split(' ')) == answer
+#     equation = "1 4 / 4 *"
+#     answer = 1
+#     assert  calculate(equation.split(' ')) == answer
 
-    equation = "0 cos"
-    answer = 1
-    assert  calculate(equation.split(' ')) == answer
+#     equation = "0 cos"
+#     answer = 1
+#     assert  calculate(equation.split(' ')) == answer
 
-    equation = "1 4 / 4 * 1 - cos"
-    answer = 1
-    assert  calculate(equation.split(' ')) == answer
+#     equation = "1 4 / 4 * 1 - cos"
+#     answer = 1
+#     assert  calculate(equation.split(' ')) == answer
 
-    print "data.py: Test passed"
+#     print "data.py: Test passed"
     
-# test()
+#test()

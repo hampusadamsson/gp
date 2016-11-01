@@ -184,13 +184,13 @@ class tree:
 
     def calc(self, x_var):
         if type(self.data)!=int and self.data[0] == 'x':
-            return x_var[int(self.data[1])-1]
+            return x_var[int(self.data[1:])-1]
         
         data = get_data(self.data)
         
         if nr_inp(self.data) == 2:
-            ans1 = self.left.calc(x_var)
-            ans2 = self.right.calc(x_var)
+            ans1 = self.right.calc(x_var)
+            ans2 = self.left.calc(x_var)
             try:
                 ans = data(ans1,ans2)
             except:
@@ -207,17 +207,34 @@ class tree:
             ans = data
         return ans
 
+
+    # def calc(self, x_var):
+    #     if type(self.data)!=int and self.data[0] == 'x':
+    #         return x_var[int(self.data[1])-1]
+        
+    #     data = get_data(self.data)
+        
+    #     if nr_inp(self.data) == 2:
+    #         ans1 = self.left.calc(x_var)
+    #         ans2 = self.right.calc(x_var)
+    #         try:
+    #             ans = data(ans1,ans2)
+    #         except:
+    #             return False
+        
+    #     elif nr_inp(self.data) == 1:
+    #         ans1 = self.left.calc(x_var)
+    #         try:
+    #             ans = data(ans1)
+    #         except:
+    #             return False
+
+    #     else:
+    #         ans = data
+    #     return ans
+
     
 def init_tree(depth):
     ntree = tree()
     ntree.add(depth)    
     return ntree
-
-        
-# tr = tree()
-# tr.create_tree([0,'pi','cos','+'])
-# tr = init_tree(5)
-# print tr.make_list()
-
-# print tr.calc()
-

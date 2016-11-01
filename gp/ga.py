@@ -1,24 +1,26 @@
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import copy
 from root import *
 import random
 
+# plt.ylim([0,0.125])
 
 
 def plot(vals):
-    # plt.plot(vals)
-    # plt.ylabel('MSE')    
-    # plt.show()
+    plt.plot(vals)
+    plt.ylabel('MSE')    
+    plt.show()
     return 0
-    
+
+
 class ga:
-    iterations = 1000000
-    pop_size = 1000
+    iterations = 1000
+    pop_size = 50
     pop = []
 
-    elit = 200
-    mut_rate = 0.9
-    cross_rate = 0.9
+    elit = 10
+    mut_rate = 0.75
+    cross_rate = 0.75
     
     result = []
     train_set = [[3,2,7,8,2,6],[2,2,9,7,2,4],[1,2,3,9,9,81]]
@@ -41,7 +43,7 @@ class ga:
         for x in range(0, self.pop_size):
             ind = init_root()
             self.pop.append(ind)
-        self.pop[0] = in_b()
+        # self.pop[0] = in_b()
 
             
     def evaluate(self):
@@ -116,7 +118,7 @@ class ga:
             print self.pop[0].tree.make_list()
 
             
-            # NODE COUNTING
+            # NODE COUNTING (impacts performance)
             tot = 0
             for x in self.pop:
                 tot += len(x.tree.tree_to_list())
@@ -137,39 +139,45 @@ class ga:
             for ind in new_pop:
                 val = random.uniform(0, 1)
                 if val < self.mut_rate:
-                    ind.mutate() # implement mutation in tree
+                    ind.mutate()
 
                     
             # ELITISM
             for x in range(0, self.elit):
                 new_pop.append(self.pop.pop(0))
 
-
                 
             self.pop = new_pop
+
             
         # END CHECK
         self.evaluate()
         self.sort()
 
+        # RETURN RESULT - best individual
         return self.pop[0]
 
     
 def batch():
+    import time
+
     gan = ga()
+    gan.mutrate = 1
+    gan.crossoverrate = 1
+    
     gan.load_data()
     gan.init()
-
-    best = gan.run()
+    best1 = gan.run()
+    print gan.result
     
     print "---"
-    print best.tree.make_list()
-    print "MSE: " + str(best.fit)
+    print best1.tree.make_list()
+    print "MSE: " + str(best1.fit)
+    print best1.fit
     print "---"
 
     #plotting
-    plot(gan.result)
-
-    
+    plot(gan.result)    
+        
 batch()
-    
+

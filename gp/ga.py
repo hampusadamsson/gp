@@ -14,7 +14,7 @@ def plot(vals):
 
 
 class ga:
-    iterations = 1000
+    iterations = 1000000000
     pop_size = 50
     pop = []
 
@@ -162,8 +162,8 @@ def batch():
     import time
 
     gan = ga()
-    gan.mutrate = 0.9
-    gan.crossoverrate = 0.9
+    # gan.mutrate = 0.9
+    # gan.crossoverrate = 0.9
     
     gan.load_data()
     gan.init()

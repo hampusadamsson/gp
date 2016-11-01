@@ -4,8 +4,8 @@ from tree import *
 class root:
     tree = None
     fit = None
-    depth = 4
-    max_depth = 6
+    depth = 5
+    max_depth = 7
     
     def init(self):
         self.tree = init_tree(self.depth)
